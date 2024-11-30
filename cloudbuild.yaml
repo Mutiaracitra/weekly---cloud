@@ -13,7 +13,7 @@ steps:
 #deploy to cloud run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed']
+    args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed', --allow-unauthenticated]
 
 images:
   - 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest'
