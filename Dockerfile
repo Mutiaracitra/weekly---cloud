@@ -12,4 +12,4 @@ RUN which uvicorn  # Memastikan uvicorn dapat ditemukan di PATH
 
 COPY ./app /code/app
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
