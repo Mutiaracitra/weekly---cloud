@@ -2,16 +2,18 @@ options:
  logging: CLOUD_LOGGING_ONLY
 
 steps:
+#build 
   - name: 'gcr.io/cloud-builders/docker' # Image prebuilt oleh Google
     args: ['build', '-t', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '.']
+
+#push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest']
 
+#deploy to cloud run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed']
+
 images:
   - 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest'
-
-#deploy to cloud
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed']
-
