@@ -1,3 +1,6 @@
+options:
+ logging: CLOUD_LOGGING_ONLY
+
 steps:
   - name: 'gcr.io/cloud-builders/docker' # Image prebuilt oleh Google
     args: ['build', '-t', 'gcr.io/grand-analyzer-443203-j6/fastapi-app:latest', '.']
